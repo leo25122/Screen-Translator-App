@@ -3,136 +3,256 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Screen Translator - Guida all'Installazione</title>
+    <title>Screen Translator - Traduzione Istantanea dal Tuo Schermo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --background-color: #f4f7f6;
+            --text-color: #555;
+            --light-gray: #ecf0f1;
+            --white-color: #ffffff;
+        }
+
         body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-            line-height: 1.6; 
-            background-color: #f4f7f6; 
-            color: #333; 
+            font-family: 'Poppins', sans-serif; 
+            line-height: 1.7; 
+            background-color: var(--background-color); 
+            color: var(--text-color); 
             margin: 0; 
-            padding: 20px; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh;
         }
-        .container { 
-            max-width: 800px; 
-            background: #ffffff; 
-            padding: 40px; 
-            border-radius: 10px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
-            text-align: center;
+
+        .header {
+            background: var(--white-color);
+            padding: 20px 40px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-        h1 { 
-            color: #2c3e50; 
-            margin-bottom: 10px; 
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--secondary-color);
         }
-        .subtitle { 
-            color: #7f8c8d; 
-            font-size: 1.1em; 
-            margin-bottom: 30px; 
-        }
-        
-        /* === NUOVI STILI PER I PASSAGGI DI INSTALLAZIONE === */
-        .download-steps {
-            margin-top: 30px;
-            text-align: left;
-        }
-        .step {
-            background-color: #f9f9f9;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 25px;
-        }
-        .step h2 {
-            margin-top: 0;
-            color: #34495e;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 5px;
-        }
-        .step p {
-            margin-bottom: 20px;
-        }
-        .step .warning {
-            color: #c0392b;
-            font-weight: bold;
-        }
-        
-        .download-button { 
-            display: inline-block; 
-            background-color: #3498db; /* Blu per il download principale */
-            color: #ffffff; 
-            padding: 15px 30px; 
-            font-size: 1.2em; 
-            font-weight: bold; 
-            text-decoration: none; 
-            border-radius: 5px; 
-            transition: background-color 0.3s; 
-        }
-        .download-button:hover { 
-            background-color: #2980b9; 
-        }
-        
-        /* === Pulsante secondario per Tesseract === */
-        .download-button-secondary {
-            display: inline-block;
-            background-color: #27ae60; /* Verde per il requisito */
-            color: #ffffff;
-            padding: 12px 25px;
-            text-decoration: none;
+
+        .nav-button {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 10px 20px;
             border-radius: 5px;
-            font-weight: bold;
+            text-decoration: none;
+            font-weight: 600;
             transition: background-color 0.3s;
         }
-        .download-button-secondary:hover {
-            background-color: #229954;
+        .nav-button:hover {
+            background-color: #2980b9;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(45deg, rgba(44, 62, 80, 0.9), rgba(52, 152, 219, 0.9)), url('https://www.transparenttextures.com/patterns/cubes.png');
+            color: var(--white-color);
+        }
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .hero p {
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+
+        .container { 
+            max-width: 960px; 
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section {
+            margin-bottom: 60px;
         }
         
-        .version-info { 
-            margin-top: 15px; 
-            color: #95a5a6; 
+        h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: var(--secondary-color);
+            margin-bottom: 40px;
+            position: relative;
         }
-        footer { 
-            margin-top: 40px; 
-            color: #bdc3c7; 
-            font-size: 0.9em; 
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .feature-card {
+            background: var(--white-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .feature-icon {
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .feature-card h3 {
+            font-size: 1.4em;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        
+        .installation-steps {
+            background: var(--white-color);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .step-number {
+            font-size: 3em;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        .step-content h3 {
+            margin: 0 0 10px 0;
+            color: var(--secondary-color);
+        }
+        .warning {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+
+        .footer {
+            background-color: var(--secondary-color);
+            color: var(--light-gray);
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .footer p {
+            margin: 0;
+        }
+        .footer a {
+            color: var(--primary-color);
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Screen Translator</h1>
-        <p class="subtitle">Traduci testo da qualsiasi punto dello schermo in tempo reale.</p>
 
-        <!-- === NUOVA SEZIONE GUIDATA === -->
-        <div class="download-steps">
-            
-            <div class="step">
-                <h2>Passo 1: Installa Tesseract OCR</h2>
-                <p>
-                    <span class="warning">PRIMA di tutto, installa Tesseract OCR.</span> Questo componente è <strong>obbligatorio</strong> per il funzionamento del programma.
-                </p>
-                <a href="https://github.com/UB-Mannheim/tesseract/wiki" target="_blank" class="download-button-secondary">Scarica Tesseract dal Sito Ufficiale</a>
-                <p style="margin-top: 15px; font-size: 0.9em;">(Durante l'installazione di Tesseract, ricorda di selezionare le lingue aggiuntive che ti servono).</p>
-            </div>
+    <header class="header">
+        <div class="logo">Screen Translator</div>
+        <a href="#download" class="nav-button">Scarica Ora</a>
+    </header>
 
-            <div class="step">
-                <h2>Passo 2: Scarica Screen Translator</h2>
-                <p>
-                    Una volta installato Tesseract, sei pronto per scaricare l'applicazione.
-                </p>
-                <a href="https://github.com/leo25122/Screen-Translator-App/releases/download/v1.0-beta/setup-screen-translator.exe" class="download-button">Scarica Screen Translator</a>
-                <p class="version-info">Versione 1.0_beta</p>
-            </div>
+    <main>
+        <section class="hero">
+            <h1>Traduci Qualsiasi Cosa, Istantaneamente.</h1>
+            <p>Screen Translator è l'applicazione per Windows che rompe le barriere linguistiche, permettendoti di tradurre testo direttamente dallo schermo in tempo reale.</p>
+            <a href="#download" class="nav-button">Scarica v1.0-beta</a>
+        </section>
 
+        <div class="container">
+            <section id="features" class="section">
+                <h2>Cosa Può Fare Per Te</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <h3>Selezione Intelligente</h3>
+                        <p>Seleziona qualsiasi area dello schermo: sottotitoli, immagini, chat o documenti protetti. Il nostro OCR estrarrà il testo per te.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💼</div>
+                        <h3>Modalità Teams</h3>
+                        <p>Una modalità unica e ottimizzata per catturare e tradurre automaticamente i sottotitoli durante le tue riunioni su Microsoft Teams.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🌍</div>
+                        <h3>Supporto Multilingue</h3>
+                        <p>Grazie al potente motore di Argos Translate, puoi tradurre da e verso decine di lingue, tutto offline.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3>Privacy Garantita</h3>
+                        <p>Tutte le traduzioni avvengono localmente sul tuo computer. Nessun dato viene inviato a server esterni, garantendo la tua privacy.</p>
+                    </div>
+                     <div class="feature-card">
+                        <div class="feature-icon">⚙️</div>
+                        <h3>Pieno Controllo</h3>
+                        <p>Personalizza l'interfaccia, regola il bilanciamento tra velocità e accuratezza, e salva la cronologia delle traduzioni per uso futuro.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">👨‍💻</div>
+                        <h3>Open Source</h3>
+                        <p>Crediamo nella trasparenza. Il codice sorgente è disponibile su GitHub per chiunque voglia esplorarlo o contribuire.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="download" class="section">
+                <h2>Installazione Guidata</h2>
+                <div class="installation-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Installa il Motore OCR</h3>
+                            <p class="warning">Requisito Obbligatorio:</p>
+                            <p>Prima di tutto, scarica e installa Tesseract OCR, il componente che permette al programma di "leggere" lo schermo.</p>
+                            <a href="https://github.com/UB-Mannheim/tesseract/wiki" target="_blank" class="nav-button">Scarica Tesseract</a>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Scarica Screen Translator</h3>
+                            <p>Ora che il motore OCR è installato, sei pronto per scaricare l'applicazione principale.</p>
+                            <a href="[IL_TUO_LINK_ALLA_RELEASE_EXE_QUI]" class="nav-button">Scarica Screen Translator v1.0-beta</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-        
-        <footer>
-            <p>Creato da Leonardo Dogariu</p>
-        </footer>
-    </div>
+    </main>
+
+    <footer class="footer">
+        <p>Progetto creato con ❤️ da Leonardo Dogariu. <a href="[IL_TUO_LINK_AL_REPOSITORY_GITHUB_QUI]" target="_blank">Vedi il codice su GitHub</a>.</p>
+    </footer>
+
 </body>
 </html>
